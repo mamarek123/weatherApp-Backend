@@ -20,6 +20,6 @@ public class ExpectedEnergyGenerationCalculator {
     }
 
     public double calculate(double sunlightDuration){
-        return sunlightDuration * photovoltaicInstallationPower * panelEfficiency;
+        return sunlightDuration/60/60 * photovoltaicInstallationPower * panelEfficiency;
     }
 }
