@@ -23,14 +23,15 @@ public class WeatherAppRestController {
     private final SummaryService summaryService;
 
 
-
     @GetMapping("/weekly/forecast")
-    public ResponseEntity<ForecastResponse> getWeeklyForecast(@RequestParam @DecimalMin("-90.0") @DecimalMax("90.0") Double latitude, @RequestParam @DecimalMin("-90.0") @DecimalMax("90.0") Double longitude){
+    public ResponseEntity<ForecastResponse> getWeeklyForecast(@RequestParam @DecimalMin("-90.0") @DecimalMax("90.0")Double latitude, @RequestParam @DecimalMin("-180.0") @DecimalMax("180.0") Double longitude){
         return ResponseEntity.ok(forecastService.getForecast(latitude, longitude));
     }
 
+
+
     @GetMapping("/weekly/summary")
-    public ResponseEntity<SummaryResponse> getWeeklySummary(@RequestParam @DecimalMin("-90.0") @DecimalMax("90.0") Double latitude, @RequestParam @DecimalMin("-90.0") @DecimalMax("90.0") Double longitude){
+    public ResponseEntity<SummaryResponse> getWeeklySummary(@RequestParam @DecimalMin("-90.0") @DecimalMax("90.0")Double latitude, @RequestParam @DecimalMin("-180.0") @DecimalMax("180.0") Double longitude){
         return ResponseEntity.ok(summaryService.getWeeklySummary(latitude, longitude));
     }
 

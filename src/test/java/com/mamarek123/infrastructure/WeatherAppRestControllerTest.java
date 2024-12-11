@@ -34,18 +34,18 @@ class WeatherAppRestControllerTest {
     private final static String FORECAST_PATH = "/api/v1/weekly/forecast";
     private final static String SUMMARY_PATH = "/api/v1/weekly/summary";
     @Test
-    void shouldBeBadRequestOnForecastEndpointWhenLatOrLenOutside9090limit() throws Exception {
+    void shouldBeBadRequestOnForecastEndpointWhenLatOrLonOutside9090or180180limit() throws Exception {
         Mockito.when(forecastService.getForecast(any(),any())).thenReturn(null);
 
         mockMvc.perform(get(FORECAST_PATH)
                         .param("latitude","-91")
-                        .param("longitude","91")
+                        .param("longitude","181")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    void shouldBeOkOnSummaryEndpointWhenLatOrLenInside9090limit() throws Exception {
+    void shouldBeOkOnSummaryEndpointWhenLatOrLonInside9090limit() throws Exception {
         Mockito.when(summaryService.getWeeklySummary(any(),any())).thenReturn(null);
 
 
@@ -56,7 +56,7 @@ class WeatherAppRestControllerTest {
                 .andExpect(status().isOk());
     }
     @Test
-    void shouldBeBadRequestOnForecastEndpointWhenLatOrLenMissing() throws Exception {
+    void shouldBeBadRequestOnForecastEndpointWhenLatOrLonMissing() throws Exception {
         Mockito.when(forecastService.getForecast(any(),any())).thenReturn(null);
 
         mockMvc.perform(get(FORECAST_PATH)
