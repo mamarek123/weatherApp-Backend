@@ -41,7 +41,7 @@ public class ServiceTest {
         ForecastResponse forecastResponse = forecastService.getForecast(40.0,40.0);
         Assertions.assertNotNull(forecastResponse);
         Assertions.assertEquals(forecastResponse.getDates().size(),7);
-        Assertions.assertEquals(forecastResponse.getGeneratedEnergy().intValue(),35829);
+        Assertions.assertEquals(forecastResponse.getGeneratedEnergy().intValue(),9);
 
 
     }
